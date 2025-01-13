@@ -100,10 +100,13 @@ class ResidualBlock(Layer):
                         kernel_initializer=self.kernel_initializer
                     )
                     if self.use_weight_norm:
-                        from tensorflow_addons.layers import WeightNormalization
-                        # wrap it. WeightNormalization API is different than BatchNormalization or LayerNormalization.
-                        with K.name_scope('norm_{}'.format(k)):
-                            conv = WeightNormalization(conv)
+                        print(
+                            'WARNING: Weight normalization is an DISABLED in ConWx Version.')
+                        # from tensorflow_addons.layers import WeightNormalization
+                        # # wrap it. WeightNormalization API is different than BatchNormalization or LayerNormalization.
+                        # with K.name_scope('norm_{}'.format(k)):
+                        #     conv = WeightNormalization(conv)
+
                     self._build_layer(conv)
 
                 with K.name_scope('norm_{}'.format(k)):
